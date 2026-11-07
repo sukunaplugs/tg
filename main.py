@@ -28,7 +28,11 @@ TOKENS = [
 ]
 
 # FIXED: Auto detect chat ID or use input
-MASTER_ID = input("𝐄ɴᴛᴇʀ 𝐘ᴏᴜʀ 𝐂ʜᴀᴛ 𝐈ᴅ (or press Enter to auto-detect): ")
+MASTER_ID = os.getenv("MASTER_ID")
+if not MASTER_ID:
+    MASTER_ID = None
+else:
+    MASTER_ID = MASTER_ID.strip()
 if not MASTER_ID.strip():
     MASTER_ID = None  # Will be auto-detected when bot starts
     print("⚠️ No Chat ID provided - will auto-detect from first message")
